@@ -23,8 +23,15 @@ public class MediaPlayerHolder implements PlayerAdapter {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     stopUpdatingCallbackWithPosition(true);
+                    logToUI("MediaPlayer playback completed");
                 }
             });
+        }
+    }
+
+    private void logToUI(String message) {
+        if (playbackInfoListener != null){
+            playbackInfoListener.onLogUpdated(message);
         }
     }
 
