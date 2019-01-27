@@ -37,4 +37,9 @@ public class MediaPlayerHolder implements PlayerAdapter {
     public void initializeProgressCallback() {
 
     }
+
+    @Override
+    public void seekTo(int position) {
+
+    }
 }

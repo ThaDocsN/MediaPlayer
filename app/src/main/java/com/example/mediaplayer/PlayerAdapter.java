@@ -12,4 +12,5 @@ public interface PlayerAdapter {
     void reset();
     void pause();
     void initializeProgressCallback();
+    void seekTo(int position);
 }
