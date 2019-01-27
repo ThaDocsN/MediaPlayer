@@ -25,31 +25,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initializeUI();
         initializeSeekBar();
+        initializePlaybackController();
     }
 
-    private void initializeSeekBar() {
-        seekBar.setOnSeekBarChangeListener(
-                new SeekBar.OnSeekBarChangeListener() {
-                    int userSelection = 0;
-
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser){
-                    userSelection = progress;
-                }
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                userIsSeeking = true;
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                userIsSeeking = false;
-                playerAdapter.seekTo(userSelection);
-            }
-        });
+    private void initializePlaybackController() {
+        MediaPlayerHolder playerHolder = new MediaPlayerHolder(this);
     }
 
     private void initializeUI() {
@@ -78,5 +58,30 @@ public class MainActivity extends AppCompatActivity {
                 playerAdapter.reset();
             }
         });
+    }
+
+    private void initializeSeekBar() {
+        seekBar.setOnSeekBarChangeListener(
+                new SeekBar.OnSeekBarChangeListener() {
+                    int userSelection = 0;
+
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        if (fromUser){
+                            userSelection = progress;
+                        }
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                        userIsSeeking = true;
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        userIsSeeking = false;
+                        playerAdapter.seekTo(userSelection);
+                    }
+                });
     }
 }

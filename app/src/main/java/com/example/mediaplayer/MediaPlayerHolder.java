@@ -1,5 +1,7 @@
 package com.example.mediaplayer;
 
+import android.content.Context;
+
 public class MediaPlayerHolder implements PlayerAdapter {
 
 
@@ -11,6 +13,9 @@ public class MediaPlayerHolder implements PlayerAdapter {
     @Override
     public void release() {
 
+    }
+
+    public MediaPlayerHolder(Context context) {
     }
 
     @Override
